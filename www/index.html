@@ -21,14 +21,57 @@
     <!-- your app's js -->
     <script src="js/app.js"></script>
   </head>
-  <body ng-app="starter">
-
+  <body ng-app="taskListApp">
     <ion-pane>
-      <ion-header-bar class="bar-stable">
-        <h1 class="title">Ionic Blank Starter</h1>
+      <ion-header-bar class="bar-dark">
+        <h1 class="title">Task list</h1>
+        <button class="button button-icon ion-plus-circled" >
+        </button>
       </ion-header-bar>
       <ion-content>
+        <ion-list>
+          <ion-item >
+            <ion-checkbox>
+              <div class="row">
+                <div class="col col-top">
+                  <h2>Task 01</h2>
+                  Status: Não concluída <br>
+                  Data prevista: 02/06/2016
+                </div>
+                <div class="col col-center">
+                  <button class="button button-icon icon ion-close-circled">
+                </div>
+              </div>
+            </ion-checkbox>
+            <ion-checkbox>
+              <div class="row">
+                <div class="col col-top">
+                  <h2>Task 02</h2>
+                  Status: Não concluída <br>
+                  Data prevista: 05/06/2016
+                </div>
+                <div class="col col-center">
+                  <button class="button button-icon icon ion-close-circled">
+                </div>
+              </div>
+            </ion-checkbox>
+            <ion-checkbox>
+              <div class="row">
+                <div class="col col-top">
+                  <h2>Task 03</h2>
+                  Status: Não concluída <br>
+                  Data prevista: 12/06/2016
+                </div>
+                <div class="col col-center">
+                  <button class="button button-icon icon ion-close-circled">
+                </div>
+              </div>
+            </ion-checkbox>
+          </ion-item>
+        </ion-list>
       </ion-content>
+      <div class="bar bar-footer bar-dark">
+      </div>
     </ion-pane>
   </body>
 </html>
