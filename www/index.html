@@ -20,9 +20,12 @@
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
+    <script src="js/taskController.js"></script>
+    <script src="js/taskService.js"></script>
+    <script src="lib/ionic/js/angular/angular-resource.js"></script>
   </head>
   <body ng-app="taskListApp">
-    <ion-pane>
+    <ion-pane ng-controller="taskCtrl">
       <ion-header-bar class="bar-dark">
         <h1 class="title">Task list</h1>
         <button class="button button-icon ion-plus-circled" >
@@ -30,37 +33,13 @@
       </ion-header-bar>
       <ion-content>
         <ion-list>
-          <ion-item >
-            <ion-checkbox>
+          <ion-item ng-repeat="task in tasks">
+            <ion-checkbox ng-model="task.status">
               <div class="row">
                 <div class="col col-top">
-                  <h2>Task 01</h2>
-                  Status: Não concluída <br>
-                  Data prevista: 02/06/2016
-                </div>
-                <div class="col col-center">
-                  <button class="button button-icon icon ion-close-circled">
-                </div>
-              </div>
-            </ion-checkbox>
-            <ion-checkbox>
-              <div class="row">
-                <div class="col col-top">
-                  <h2>Task 02</h2>
-                  Status: Não concluída <br>
-                  Data prevista: 05/06/2016
-                </div>
-                <div class="col col-center">
-                  <button class="button button-icon icon ion-close-circled">
-                </div>
-              </div>
-            </ion-checkbox>
-            <ion-checkbox>
-              <div class="row">
-                <div class="col col-top">
-                  <h2>Task 03</h2>
-                  Status: Não concluída <br>
-                  Data prevista: 12/06/2016
+                  <h2>{{task.title}}</h2>
+                  Status: {{task.status ? "Concluída" : "Não concluída"}} <br>
+                  Data prevista: {{task.date | date:'dd/MM/yyyy'}}
                 </div>
                 <div class="col col-center">
                   <button class="button button-icon icon ion-close-circled">
