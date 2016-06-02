@@ -34,7 +34,7 @@
       <ion-content>
         <ion-list>
           <ion-item ng-repeat="task in tasks">
-            <ion-checkbox ng-model="task.status">
+            <ion-checkbox ng-model="task.status" ng-change="updateTask(task)">
               <div class="row">
                 <div class="col col-top">
                   <h2>{{task.title}}</h2>

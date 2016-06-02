@@ -10,5 +10,9 @@ angular.module('taskListApp')
       });
   };
 
+  $scope.updateTask = function(task){
+    taskFactory.update({id: task.id}, {task: task});
+  };
+
   getTasks();
 });
