@@ -35,17 +35,12 @@
         <ion-list>
           <ion-item ng-repeat="task in tasks">
             <ion-checkbox ng-model="task.status" ng-change="updateTask(task)">
-              <div class="row">
-                <div class="col col-top">
-                  <h2>{{task.title}}</h2>
-                  Status: {{task.status ? "Concluída" : "Não concluída"}} <br>
-                  Data prevista: {{task.date | date:'dd/MM/yyyy'}}
-                </div>
-                <div class="col col-center">
-                  <button class="button button-icon icon ion-close-circled">
-                </div>
-              </div>
+              <h2>{{task.title}}</h2>
+              Status: {{task.status ? "Concluída" : "Não concluída"}} <br>
+              Data prevista: {{task.date | date:'dd/MM/yyyy'}}
+
             </ion-checkbox>
+            <button class="button button-full button-positive" ng-click="removeTask(task)">Remover</button>
           </ion-item>
         </ion-list>
       </ion-content>

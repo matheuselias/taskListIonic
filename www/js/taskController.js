@@ -4,10 +4,16 @@ angular.module('taskListApp')
     taskFactory.query({id: ''},
       function(data){
         $scope.tasks = data;
-      },
-      function(data){
-        alert('Ocorreu um problema ao carregar as Tasks!');
       });
+  };
+
+  $scope.removeTask = function(task){
+    if (confirm('Realmente deseja excluir a task ' + task.title + '?')) {
+      taskFactory.remove({id: task.id},
+        function() {
+          getTasks();
+        });
+    }
   };
 
   $scope.updateTask = function(task){
