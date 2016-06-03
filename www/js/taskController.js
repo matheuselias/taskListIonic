@@ -1,5 +1,24 @@
 angular.module('taskListApp')
-.controller('taskCtrl', function($scope, taskFactory){
+.controller('taskCtrl', function($scope, taskFactory, $ionicModal){
+  $ionicModal.fromTemplateUrl('createModal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+
+  $scope.openModal = function() {
+    $scope.modal.show();
+    $scope.task = {};
+    $scope.task = {
+        date: new Date()
+      };
+  };
+
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+
   getTasks = function(){
     taskFactory.query({id: ''},
       function(data){
@@ -7,13 +26,19 @@ angular.module('taskListApp')
       });
   };
 
+  $scope.createTask = function(task){
+    taskFactory.save({task: task},
+      function(){
+        getTasks();
+        $scope.closeModal();
+      });
+  };
+
   $scope.removeTask = function(task){
-    if (confirm('Realmente deseja excluir a task ' + task.title + '?')) {
-      taskFactory.remove({id: task.id},
-        function() {
-          getTasks();
-        });
-    }
+    taskFactory.remove({id: task.id},
+      function() {
+        getTasks();
+      });
   };
 
   $scope.updateTask = function(task){
